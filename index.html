@@ -203,9 +203,9 @@
             <button onclick="switchTab('catalog')" data-tab="catalog" class="nav-btn w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-medium text-slate-600 hover:text-[#2756CE] hover:bg-[#F4F7FC] transition-all">
               <div class="flex items-center gap-3">
                 <i class="fa-solid fa-compact-disc w-5 text-center"></i>
-                <span>Danh mục tác phẩm</span>
+                <span>Danh mục toàn sự nghiệp</span>
               </div>
-              <span class="text-[11px] px-2 py-0.5 rounded-full bg-blue-50 text-[#2756CE] border border-[#DCE6F9] font-bold">7</span>
+              <span class="text-[11px] px-2 py-0.5 rounded-full bg-blue-50 text-[#2756CE] border border-[#DCE6F9] font-bold">18</span>
             </button>
 
             <button onclick="switchTab('dsp')" data-tab="dsp" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-medium text-slate-600 hover:text-[#2756CE] hover:bg-[#F4F7FC] transition-all">
@@ -365,10 +365,12 @@
               <div class="relative">
                 <i class="fa-regular fa-calendar text-white absolute left-3.5 top-1/2 -translate-y-1/2 text-xs pointer-events-none"></i>
                 <select id="period-select" onchange="handleFilterChange()" class="w-full sm:w-auto appearance-none bg-white/15 hover:bg-white/25 text-white text-xs sm:text-sm font-semibold pl-9 pr-9 py-2.5 rounded-xl border border-white/30 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-white/50 transition cursor-pointer">
-                  <option value="year_2026" class="text-slate-900" selected>Kỳ đối soát: Năm 2026 (T1 - T11/26)</option>
-                  <option value="q4_2026" class="text-slate-900">Kỳ đối soát: Quý 4/2026 (T10 - T11/26)</option>
-                  <option value="nov_2026" class="text-slate-900">Kỳ đối soát: Tháng 11/2026 (Hiện tại)</option>
-                  <option value="all_time" class="text-slate-900">Tất cả thời gian (2020 - 2026)</option>
+                  <option value="all_time" class="text-slate-900" selected>Tất cả thời gian (Từ trước đến nay: 2020 – 2026)</option>
+                  <option value="year_2026" class="text-slate-900">Năm 2026 (T1 – T11/2026)</option>
+                  <option value="year_2025" class="text-slate-900">Năm 2025 (Cả năm)</option>
+                  <option value="year_2024" class="text-slate-900">Năm 2024 (Cả năm)</option>
+                  <option value="era_2022_2023" class="text-slate-900">Giai đoạn Bùng nổ (2022 – 2023)</option>
+                  <option value="era_2020_2021" class="text-slate-900">Giai đoạn Khởi đầu (2020 – 2021)</option>
                 </select>
                 <i class="fa-solid fa-chevron-down text-white/80 absolute right-3.5 top-1/2 -translate-y-1/2 text-[10px] pointer-events-none"></i>
               </div>
@@ -389,19 +391,39 @@
           <div class="card-surface rounded-2xl p-5 transition-all relative overflow-hidden">
             <div class="absolute top-0 right-0 w-24 h-24 bg-[#3B6CE2]/10 rounded-full -mr-8 -mt-8"></div>
             <div class="flex items-center justify-between mb-3">
-              <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Tổng Doanh Thu Net (85%)</span>
+              <span id="kpi-net-label" class="text-xs font-bold uppercase tracking-wider text-slate-500">Tổng Doanh Thu Net Lũy Kế</span>
               <div class="w-9 h-9 rounded-xl bg-blue-50 border border-[#DCE6F9] flex items-center justify-center text-[#2756CE]">
                 <i class="fa-solid fa-wallet"></i>
               </div>
             </div>
             <div id="kpi-net-revenue" class="text-2xl sm:text-[26px] font-extrabold text-slate-900 tabular-nums tracking-tight">
-              4.852.450.000 ₫
+              26.485.920.000 ₫
             </div>
             <div class="flex items-center justify-between mt-3 pt-3 border-t border-slate-100 text-xs">
               <span id="kpi-net-growth" class="inline-flex items-center gap-1 font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">
-                <i class="fa-solid fa-arrow-trend-up"></i> +18.4%
+                <i class="fa-solid fa-arrow-trend-up"></i> +100% Lũy kế
               </span>
-              <span class="text-slate-400 font-medium">so với kỳ trước</span>
+              <span id="kpi-period-sub" class="text-slate-400 font-medium">2020 – 2026</span>
+            </div>
+          </div>
+
+          <!-- KPI 2: Tổng Lượt Stream -->
+          <div class="card-surface rounded-2xl p-5 transition-all relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-[#A855F7]/10 rounded-full -mr-8 -mt-8"></div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Tổng Lượt Stream Toàn Cầu</span>
+              <div class="w-9 h-9 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center text-[#A855F7]">
+                <i class="fa-solid fa-headphones-simple"></i>
+              </div>
+            </div>
+            <div id="kpi-streams" class="text-2xl sm:text-[26px] font-extrabold text-slate-900 tabular-nums tracking-tight">
+              812.450.000
+            </div>
+            <div class="flex items-center justify-between mt-3 pt-3 border-t border-slate-100 text-xs">
+              <span id="kpi-streams-growth" class="inline-flex items-center gap-1 font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">
+                <i class="fa-solid fa-globe"></i> 18 tác phẩm
+              </span>
+              <span class="text-slate-400 font-medium">142+ Quốc gia</span>
             </div>
           </div>
 
@@ -523,42 +545,87 @@
         <!-- 3. TOP TRACKS PERFORMANCE TABLE -->
         <section id="tracks-section" class="card-surface rounded-2xl overflow-hidden">
           <!-- Table Header & Controls -->
-          <div class="p-5 sm:p-6 border-b border-[#DCE6F9] bg-gradient-to-r from-white via-white to-[#F4F7FC] flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div class="p-5 sm:p-6 border-b border-[#DCE6F9] bg-gradient-to-r from-white via-white to-[#F4F7FC] flex flex-col xl:flex-row xl:items-center justify-between gap-4">
             <div>
-              <div class="flex items-center gap-2.5">
-                <h3 class="text-base sm:text-lg font-bold text-slate-900">Danh mục Tác phẩm & Đối soát Bản quyền</h3>
-                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-blue-50 text-[#2756CE] border border-[#DCE6F9]">7 Tác phẩm</span>
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <h3 class="text-base sm:text-lg font-bold text-slate-900">Danh mục Toàn Sự Nghiệp (2020 – 2026)</h3>
+                <span id="catalog-badge-count" class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-blue-50 text-[#2756CE] border border-[#DCE6F9]">18 Tác phẩm</span>
               </div>
-              <p class="text-xs text-slate-500 mt-1">Nhấp vào từng ca khúc để xem chi tiết phân bổ DSP và tỷ lệ phân chia Master (70%) / Publishing (30%)</p>
+              <p class="text-xs text-slate-500 mt-1">Bao gồm đầy đủ bản ghi Master + Publishing và các siêu hit sáng tác cho nghệ sĩ khác (Cô Đơn Trên Sofa, Tái Sinh, Nâng Chén Tiêu Sầu)</p>
             </div>
 
-            <!-- Search, Status Filter, Sort -->
-            <div class="flex flex-wrap items-center gap-2.5">
+            <!-- Search, Era Filter, Role Filter, Status Filter, Sort -->
+            <div class="flex flex-wrap items-center gap-2">
               <!-- Search Input -->
-              <div class="relative flex-1 sm:flex-initial min-w-[215px]">
+              <div class="relative flex-1 sm:flex-initial min-w-[200px]">
                 <i class="fa-solid fa-magnifying-glass text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 text-xs"></i>
                 <input 
                   id="track-search" 
                   type="text" 
                   oninput="renderTracksTable()" 
-                  placeholder="Tìm tên bài hát hoặc mã ISRC..." 
+                  placeholder="Tìm tên bài hát, ca sĩ hoặc ISRC..." 
                   class="w-full bg-[#F4F7FC] text-slate-800 placeholder-slate-400 text-xs font-medium pl-9 pr-3.5 py-2.5 rounded-xl border border-[#DCE6F9] focus:outline-none focus:border-[#2756CE] focus:bg-white transition"
                 />
               </div>
 
+              <!-- Release Era Filter -->
+              <select id="track-era-filter" onchange="renderTracksTable()" class="bg-[#F4F7FC] text-slate-700 text-xs font-semibold px-3 py-2.5 rounded-xl border border-[#DCE6F9] focus:outline-none focus:border-[#2756CE] cursor-pointer">
+                <option value="all">Tất cả năm (2020–2026)</option>
+                <option value="2025-2026">2025 – 2026 (Mới nhất)</option>
+                <option value="2023-2024">2023 – 2024 (Đỉnh cao)</option>
+                <option value="2020-2022">2020 – 2022 (Khởi đầu & Viral)</option>
+              </select>
+
+              <!-- Role Filter -->
+              <select id="track-role-filter" onchange="renderTracksTable()" class="bg-[#F4F7FC] text-slate-700 text-xs font-semibold px-3 py-2.5 rounded-xl border border-[#DCE6F9] focus:outline-none focus:border-[#2756CE] cursor-pointer">
+                <option value="all">Tất cả vai trò</option>
+                <option value="master_pub">Master + Publishing</option>
+                <option value="pub_only">Publishing Only (Nhạc sĩ)</option>
+              </select>
+
               <!-- Status Filter -->
-              <select id="track-status-filter" onchange="renderTracksTable()" class="bg-[#F4F7FC] text-slate-700 text-xs font-semibold px-3.5 py-2.5 rounded-xl border border-[#DCE6F9] focus:outline-none focus:border-[#2756CE] cursor-pointer">
+              <select id="track-status-filter" onchange="renderTracksTable()" class="bg-[#F4F7FC] text-slate-700 text-xs font-semibold px-3 py-2.5 rounded-xl border border-[#DCE6F9] focus:outline-none focus:border-[#2756CE] cursor-pointer">
                 <option value="all">Tất cả trạng thái</option>
                 <option value="paid">Đã thanh toán</option>
                 <option value="pending">Đang đối soát</option>
               </select>
 
               <!-- Sort By -->
-              <select id="track-sort" onchange="renderTracksTable()" class="bg-[#F4F7FC] text-slate-700 text-xs font-semibold px-3.5 py-2.5 rounded-xl border border-[#DCE6F9] focus:outline-none focus:border-[#2756CE] cursor-pointer">
-                <option value="net_desc">Sắp xếp: Doanh thu Net cao nhất</option>
-                <option value="streams_desc">Sắp xếp: Lượt Stream cao nhất</option>
-                <option value="net_asc">Sắp xếp: Doanh thu thấp nhất</option>
+              <select id="track-sort" onchange="renderTracksTable()" class="bg-[#F4F7FC] text-slate-700 text-xs font-semibold px-3 py-2.5 rounded-xl border border-[#DCE6F9] focus:outline-none focus:border-[#2756CE] cursor-pointer">
+                <option value="net_desc">Doanh thu Net cao nhất</option>
+                <option value="streams_desc">Lượt Stream cao nhất</option>
+                <option value="year_desc">Năm phát hành (Mới → Cũ)</option>
+                <option value="year_asc">Năm phát hành (Cũ → Mới)</option>
               </select>
+            </div>
+          </div>
+
+          <!-- Responsive Table Wrapper -->
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-[#F4F7FC] text-[11px] font-bold uppercase tracking-wider text-slate-500 border-b border-[#DCE6F9]">
+                  <th class="py-3.5 px-5">Tác phẩm, Năm & Mã ISRC</th>
+                  <th class="py-3.5 px-4">Vai trò & Nền tảng chính</th>
+                  <th class="py-3.5 px-4 text-right">Tổng Streams</th>
+                  <th class="py-3.5 px-4 text-right">Doanh thu Gross</th>
+                  <th class="py-3.5 px-4 text-right">Phí Quản trị (15%)</th>
+                  <th class="py-3.5 px-4 text-right">Net Nghệ sĩ nhận</th>
+                  <th class="py-3.5 px-4 text-center">Trạng thái</th>
+                  <th class="py-3.5 px-5 text-right">Chi tiết</th>
+                </tr>
+              </thead>
+              <tbody id="tracks-table-body" class="divide-y divide-slate-100 text-sm">
+                <!-- Rows rendered dynamically via JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Table Footer Summary -->
+          <div class="px-5 py-3.5 bg-[#F4F7FC]/80 border-t border-[#DCE6F9] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-500">
+            <div id="table-count-label" class="font-medium">Hiển thị 18 trên tổng số 18 tác phẩm phát hành</div>
+            <div class="flex items-center gap-4">
+              <span>Tổng Net danh mục đang lọc: <strong id="filtered-net-total" class="text-[#2756CE] tabular-nums">26.485.920.000 ₫</strong></span>
             </div>
           </div>
 
@@ -835,62 +902,94 @@
     // Exchange Rate Configuration
     const EXCHANGE_RATE = 25000; // 1 USD = 25,000 VND
     let currentCurrency = 'VND';
-    let currentPeriod = 'year_2026';
+    let currentPeriod = 'all_time';
     let selectedTrackISRC = '';
 
-    // Period Multiplier & KPI Data Presets
+    // Period Multiplier & Multi-Year Historical Data (2020 - 2026)
     const PERIOD_DATA = {
+      all_time: {
+        label: 'Tất cả thời gian (2020 – 2026)',
+        subLabel: 'Từ trước đến nay (2020 – 2026)',
+        multiplier: 1.0,
+        netRevenueVND: 26485920000,
+        netGrowth: '+100% Lũy kế',
+        streams: 812450000,
+        streamsGrowth: '18 tác phẩm',
+        pendingVND: 685200000,
+        rpmVND: 32600,
+        monthlyLabels: ['2020 (Khởi đầu)', '2021 (Dạ Vũ)', '2022 (Tầng Lầu)', '2023 (Nỗi Sầu)', '2024 (Tái Sinh)', '2025 (Mở rộng)', '2026 (YTD)'],
+        monthlyNetVND: [685000000, 1890000000, 4120000000, 5840000000, 4960000000, 4138470000, 4852450000],
+        monthlyStreams: [24500000, 62800000, 129400000, 181200000, 148500000, 123200000, 142850000]
+      },
       year_2026: {
         label: 'Năm 2026 (T1 - T11/2026)',
-        multiplier: 1.0,
+        subLabel: 'So với năm 2025',
+        multiplier: 0.1832,
         netRevenueVND: 4852450000,
-        netGrowth: '+18.4%',
+        netGrowth: '+17.2%',
         streams: 142850000,
-        streamsGrowth: '+22.1%',
+        streamsGrowth: '+15.9%',
         pendingVND: 685200000,
         rpmVND: 33970,
         monthlyLabels: ['T1/26', 'T2/26', 'T3/26', 'T4/26', 'T5/26', 'T6/26', 'T7/26', 'T8/26', 'T9/26', 'T10/26', 'T11/26'],
         monthlyNetVND: [365000000, 382000000, 410500000, 395000000, 428000000, 445200000, 439000000, 462800000, 488500000, 512250000, 524200000],
         monthlyStreams: [10800000, 11250000, 12100000, 11700000, 12650000, 13100000, 12950000, 13600000, 14350000, 14950000, 15400000]
       },
-      q4_2026: {
-        label: 'Quý 4/2026 (T10 - T11/2026)',
-        multiplier: 0.2136,
-        netRevenueVND: 1036450000,
-        netGrowth: '+24.7%',
-        streams: 30350000,
-        streamsGrowth: '+26.3%',
-        pendingVND: 685200000,
-        rpmVND: 34150,
-        monthlyLabels: ['Tuần 1 T10', 'Tuần 2 T10', 'Tuần 3 T10', 'Tuần 4 T10', 'Tuần 1 T11', 'Tuần 2 T11', 'Tuần 3 T11', 'Tuần 4 T11'],
-        monthlyNetVND: [122000000, 126500000, 131000000, 132750000, 128000000, 130500000, 132200000, 133500000],
-        monthlyStreams: [3580000, 3710000, 3820000, 3840000, 3750000, 3830000, 3890000, 3930000]
+      year_2025: {
+        label: 'Năm 2025 (Cả năm)',
+        subLabel: 'Đối soát hoàn tất 2025',
+        multiplier: 0.1563,
+        netRevenueVND: 4138470000,
+        netGrowth: 'Đã quyết toán',
+        streams: 123200000,
+        streamsGrowth: '12 tháng 2025',
+        pendingVND: 0,
+        rpmVND: 33591,
+        monthlyLabels: ['Q1/2025', 'Q2/2025', 'Q3/2025', 'Q4/2025'],
+        monthlyNetVND: [965000000, 1012000000, 1048000000, 1113470000],
+        monthlyStreams: [28900000, 30200000, 31100000, 33000000]
       },
-      nov_2026: {
-        label: 'Tháng 11/2026 (Kỳ hiện tại)',
-        multiplier: 0.108,
-        netRevenueVND: 524200000,
-        netGrowth: '+9.6%',
-        streams: 15400000,
-        streamsGrowth: '+11.2%',
-        pendingVND: 524200000,
-        rpmVND: 34038,
-        monthlyLabels: ['01/11', '05/11', '10/11', '15/11', '20/11', '25/11'],
-        monthlyNetVND: [81000000, 85400000, 88200000, 89600000, 89200000, 90800000],
-        monthlyStreams: [2380000, 2510000, 2590000, 2630000, 2620000, 2670000]
+      year_2024: {
+        label: 'Năm 2024 (Cả năm)',
+        subLabel: 'Kỷ nguyên Tái Sinh & Ikigai',
+        multiplier: 0.1873,
+        netRevenueVND: 4960000000,
+        netGrowth: 'Đã quyết toán',
+        streams: 148500000,
+        streamsGrowth: '12 tháng 2024',
+        pendingVND: 0,
+        rpmVND: 33400,
+        monthlyLabels: ['Q1/2024', 'Q2/2024', 'Q3/2024', 'Q4/2024'],
+        monthlyNetVND: [1020000000, 1140000000, 1290000000, 1510000000],
+        monthlyStreams: [30500000, 34200000, 38600000, 45200000]
       },
-      all_time: {
-        label: 'Tất cả thời gian (2020 - 2026)',
-        multiplier: 3.15,
-        netRevenueVND: 15285217500,
-        netGrowth: '+41.2%',
-        streams: 468920000,
-        streamsGrowth: '+38.9%',
-        pendingVND: 685200000,
-        rpmVND: 32596,
-        monthlyLabels: ['2020', '2021', '2022', '2023', '2024', '2025', '2026 (YTD)'],
-        monthlyNetVND: [420000000, 1180000000, 2450000000, 3120000000, 1620000000, 1642767500, 4852450000],
-        monthlyStreams: [14500000, 39200000, 78500000, 96400000, 48900000, 48570000, 142850000]
+      era_2022_2023: {
+        label: 'Giai đoạn Bùng nổ (2022 – 2023)',
+        subLabel: 'Bên Trên Tầng Lầu & Cắt Đôi Nỗi Sầu',
+        multiplier: 0.3760,
+        netRevenueVND: 9960000000,
+        netGrowth: '+287% Tăng trưởng',
+        streams: 310600000,
+        streamsGrowth: '24 tháng',
+        pendingVND: 0,
+        rpmVND: 32066,
+        monthlyLabels: ['H1/2022', 'H2/2022', 'H1/2023', 'H2/2023'],
+        monthlyNetVND: [1340000000, 2780000000, 2650000000, 3190000000],
+        monthlyStreams: [42100000, 87300000, 82400000, 98800000]
+      },
+      era_2020_2021: {
+        label: 'Giai đoạn Khởi đầu (2020 – 2021)',
+        subLabel: 'Tình Đầu, Ngây Thơ & Dạ Vũ',
+        multiplier: 0.0972,
+        netRevenueVND: 2575000000,
+        netGrowth: '+175.9% YoY',
+        streams: 87300000,
+        streamsGrowth: '24 tháng',
+        pendingVND: 0,
+        rpmVND: 29495,
+        monthlyLabels: ['H1/2020', 'H2/2020', 'H1/2021', 'H2/2021'],
+        monthlyNetVND: [215000000, 470000000, 740000000, 1150000000],
+        monthlyStreams: [7800000, 16700000, 24900000, 37900000]
       }
     };
 
@@ -900,108 +999,334 @@
       { name: 'TikTok & Douyin', share: 28, color: '#A855F7', icon: 'fa-brands fa-tiktok' },
       { name: 'Apple Music', share: 16, color: '#EC4899', icon: 'fa-brands fa-apple' },
       { name: 'YouTube Music & Content ID', share: 14, color: '#38BDF8', icon: 'fa-brands fa-youtube' },
-      { name: 'Zing MP3 & NhacCuaTui', share: 8, color: '#6366F1', icon: 'fa-solid fa-music' }
+      { name: 'Zing MP3, NCT & Tencent', share: 8, color: '#6366F1', icon: 'fa-solid fa-music' }
     ];
 
-    // Top 7 Hits Catalog of Tăng Duy Tân (Exact requested tracklist)
+    // FULL CAREER CATALOG (2020 - 2026): 18 Tracks across Master+Publishing & Publishing-Only hits
     const TRACKS_DATA = [
       {
         id: 1,
-        title: 'Bên Trên Tầng Lầu',
+        title: 'Bên Trên Tầng Lầu (Original & Remix)',
+        artistNote: 'Tăng Duy Tân',
         isrc: 'VN-EMV-22-00101',
-        releaseYear: '2022',
+        releaseYear: 2022,
+        era: '2020-2022',
+        roleType: 'master_pub',
+        roleLabel: 'Master + Publishing',
         topDsp: 'Spotify & Douyin',
         topDspIcon: 'fa-brands fa-spotify text-[#2756CE]',
-        baseStreams: 36450000,
-        baseGrossVND: 1465000000,
+        baseStreams: 148500000,
+        baseGrossVND: 5720000000,
         status: 'paid',
         masterSplit: 'Tăng Duy Tân (85%) • Euphoria Media (15%)',
         publishingSplit: 'Tăng Duy Tân (100% Tác giả)',
-        dspSplits: { Spotify: 36, 'TikTok & Douyin': 30, 'Apple Music': 15, 'YouTube Music & Content ID': 12, 'Zing MP3 & NhacCuaTui': 7 }
+        dspSplits: { Spotify: 36, 'TikTok & Douyin': 30, 'Apple Music': 15, 'YouTube Music & Content ID': 12, 'Zing MP3, NCT & Tencent': 7 }
       },
       {
         id: 2,
         title: 'Cắt Đôi Nỗi Sầu',
+        artistNote: 'Tăng Duy Tân',
         isrc: 'VN-EMV-23-00205',
-        releaseYear: '2023',
+        releaseYear: 2023,
+        era: '2023-2024',
+        roleType: 'master_pub',
+        roleLabel: 'Master + Publishing',
         topDsp: 'TikTok & YouTube',
         topDspIcon: 'fa-brands fa-tiktok text-[#A855F7]',
-        baseStreams: 32800000,
-        baseGrossVND: 1318000000,
+        baseStreams: 132400000,
+        baseGrossVND: 5140000000,
         status: 'paid',
         masterSplit: 'Tăng Duy Tân (85%) • Euphoria Media (15%)',
         publishingSplit: 'Tăng Duy Tân (80%) • Drum7 (20% Hòa âm)',
-        dspSplits: { Spotify: 31, 'TikTok & Douyin': 34, 'Apple Music': 14, 'YouTube Music & Content ID': 14, 'Zing MP3 & NhacCuaTui': 7 }
+        dspSplits: { Spotify: 31, 'TikTok & Douyin': 34, 'Apple Music': 14, 'YouTube Music & Content ID': 14, 'Zing MP3, NCT & Tencent': 7 }
       },
       {
         id: 3,
         title: 'Bật Tình Yêu Lên',
+        artistNote: 'Tăng Duy Tân ft. Hòa Minzy',
         isrc: 'VN-EMV-23-00118',
-        releaseYear: '2023',
+        releaseYear: 2023,
+        era: '2023-2024',
+        roleType: 'master_pub',
+        roleLabel: 'Master + Publishing',
         topDsp: 'Spotify & Apple Music',
         topDspIcon: 'fa-brands fa-spotify text-[#2756CE]',
-        baseStreams: 24600000,
-        baseGrossVND: 988000000,
+        baseStreams: 96800000,
+        baseGrossVND: 3780000000,
         status: 'paid',
         masterSplit: 'Tăng Duy Tân (50%) • Hòa Minzy (35%) • Euphoria (15%)',
         publishingSplit: 'Tăng Duy Tân (100% Sáng tác)',
-        dspSplits: { Spotify: 38, 'TikTok & Douyin': 22, 'Apple Music': 19, 'YouTube Music & Content ID': 13, 'Zing MP3 & NhacCuaTui': 8 }
+        dspSplits: { Spotify: 38, 'TikTok & Douyin': 22, 'Apple Music': 19, 'YouTube Music & Content ID': 13, 'Zing MP3, NCT & Tencent': 8 }
       },
       {
         id: 4,
-        title: 'Ngây Thơ',
+        title: 'Ngây Thơ (Original & Acoustic)',
+        artistNote: 'Tăng Duy Tân ft. Phong Max',
         isrc: 'VN-EMV-20-00042',
-        releaseYear: '2020',
-        topDsp: 'Spotify & Zing MP3',
-        topDspIcon: 'fa-brands fa-spotify text-[#2756CE]',
-        baseStreams: 18900000,
-        baseGrossVND: 756000000,
+        releaseYear: 2020,
+        era: '2020-2022',
+        roleType: 'master_pub',
+        roleLabel: 'Master + Publishing',
+        topDsp: 'Douyin & Spotify',
+        topDspIcon: 'fa-brands fa-tiktok text-[#A855F7]',
+        baseStreams: 84200000,
+        baseGrossVND: 3180000000,
         status: 'paid',
-        masterSplit: 'Tăng Duy Tân (85%) • Euphoria Media (15%)',
+        masterSplit: 'Tăng Duy Tân (65%) • Phong Max (20%) • Euphoria (15%)',
         publishingSplit: 'Tăng Duy Tân (100% Tác giả)',
-        dspSplits: { Spotify: 35, 'TikTok & Douyin': 24, 'Apple Music': 16, 'YouTube Music & Content ID': 15, 'Zing MP3 & NhacCuaTui': 10 }
+        dspSplits: { Spotify: 32, 'TikTok & Douyin': 33, 'Apple Music': 14, 'YouTube Music & Content ID': 13, 'Zing MP3, NCT & Tencent': 8 }
       },
       {
         id: 5,
-        title: 'Dạ Vũ',
+        title: 'Dạ Vũ (Original & Remix)',
+        artistNote: 'Tăng Duy Tân',
         isrc: 'VN-EMV-21-00089',
-        releaseYear: '2021',
+        releaseYear: 2021,
+        era: '2020-2022',
+        roleType: 'master_pub',
+        roleLabel: 'Master + Publishing',
         topDsp: 'Douyin & Spotify',
         topDspIcon: 'fa-brands fa-tiktok text-[#A855F7]',
-        baseStreams: 12400000,
-        baseGrossVND: 492000000,
+        baseStreams: 74500000,
+        baseGrossVND: 2840000000,
         status: 'paid',
         masterSplit: 'Tăng Duy Tân (85%) • Euphoria Media (15%)',
         publishingSplit: 'Tăng Duy Tân (100% Tác giả)',
-        dspSplits: { Spotify: 32, 'TikTok & Douyin': 31, 'Apple Music': 15, 'YouTube Music & Content ID': 14, 'Zing MP3 & NhacCuaTui': 8 }
+        dspSplits: { Spotify: 31, 'TikTok & Douyin': 35, 'Apple Music': 14, 'YouTube Music & Content ID': 12, 'Zing MP3, NCT & Tencent': 8 }
       },
       {
         id: 6,
-        title: 'Tình Đầu',
-        isrc: 'VN-EMV-20-00051',
-        releaseYear: '2020',
-        topDsp: 'Apple Music & Spotify',
-        topDspIcon: 'fa-brands fa-apple text-[#EC4899]',
-        baseStreams: 9800000,
-        baseGrossVND: 386000000,
-        status: 'pending',
-        masterSplit: 'Tăng Duy Tân (85%) • Euphoria Media (15%)',
-        publishingSplit: 'Tăng Duy Tân (100% Tác giả)',
-        dspSplits: { Spotify: 34, 'TikTok & Douyin': 23, 'Apple Music': 21, 'YouTube Music & Content ID': 13, 'Zing MP3 & NhacCuaTui': 9 }
+        title: 'Tái Sinh (Sáng tác — Tùng Dương)',
+        artistNote: 'Nhạc sĩ: Tăng Duy Tân',
+        isrc: 'VN-EMV-24-00409',
+        releaseYear: 2024,
+        era: '2023-2024',
+        roleType: 'pub_only',
+        roleLabel: 'Publishing Only (100%)',
+        topDsp: 'YouTube & Spotify',
+        topDspIcon: 'fa-brands fa-youtube text-[#38BDF8]',
+        baseStreams: 68400000,
+        baseGrossVND: 2150000000,
+        status: 'paid',
+        masterSplit: 'Bản ghi thuộc Tùng Dương (Publishing Collect qua Euphoria)',
+        publishingSplit: 'Tăng Duy Tân (100% Quyền Tác giả / VCPMC & DSP)',
+        dspSplits: { Spotify: 34, 'TikTok & Douyin': 25, 'Apple Music': 16, 'YouTube Music & Content ID': 18, 'Zing MP3, NCT & Tencent': 7 }
       },
       {
         id: 7,
+        title: 'Cô Đơn Trên Sofa (Sáng tác — Hồ Ngọc Hà)',
+        artistNote: 'Nhạc sĩ: Tăng Duy Tân',
+        isrc: 'VN-EMV-22-00167',
+        releaseYear: 2022,
+        era: '2020-2022',
+        roleType: 'pub_only',
+        roleLabel: 'Publishing Only (100%)',
+        topDsp: 'Spotify & YouTube',
+        topDspIcon: 'fa-brands fa-spotify text-[#2756CE]',
+        baseStreams: 54200000,
+        baseGrossVND: 1740000000,
+        status: 'paid',
+        masterSplit: 'Bản ghi thuộc T Production / Hồ Ngọc Hà',
+        publishingSplit: 'Tăng Duy Tân (100% Quyền Tác giả)',
+        dspSplits: { Spotify: 37, 'TikTok & Douyin': 21, 'Apple Music': 18, 'YouTube Music & Content ID': 16, 'Zing MP3, NCT & Tencent': 8 }
+      },
+      {
+        id: 8,
+        title: 'Tình Đầu',
+        artistNote: 'Tăng Duy Tân',
+        isrc: 'VN-EMV-20-00051',
+        releaseYear: 2020,
+        era: '2020-2022',
+        roleType: 'master_pub',
+        roleLabel: 'Master + Publishing',
+        topDsp: 'Apple Music & Spotify',
+        topDspIcon: 'fa-brands fa-apple text-[#EC4899]',
+        baseStreams: 39600000,
+        baseGrossVND: 1520000000,
+        status: 'paid',
+        masterSplit: 'Tăng Duy Tân (85%) • Euphoria Media (15%)',
+        publishingSplit: 'Tăng Duy Tân (100% Tác giả)',
+        dspSplits: { Spotify: 35, 'TikTok & Douyin': 22, 'Apple Music': 21, 'YouTube Music & Content ID': 13, 'Zing MP3, NCT & Tencent': 9 }
+      },
+      {
+        id: 9,
+        title: 'Ikigai (feat. Bích Phương)',
+        artistNote: 'Tăng Duy Tân, Bích Phương',
+        isrc: 'VN-EMV-24-00388',
+        releaseYear: 2024,
+        era: '2023-2024',
+        roleType: 'master_pub',
+        roleLabel: 'Master + Publishing',
+        topDsp: 'Spotify & Apple Music',
+        topDspIcon: 'fa-brands fa-spotify text-[#2756CE]',
+        baseStreams: 28400000,
+        baseGrossVND: 1120000000,
+        status: 'paid',
+        masterSplit: 'Tăng Duy Tân (50%) • Bích Phương (35%) • Euphoria (15%)',
+        publishingSplit: 'Tăng Duy Tân (100% Tác giả)',
+        dspSplits: { Spotify: 39, 'TikTok & Douyin': 20, 'Apple Music': 20, 'YouTube Music & Content ID': 13, 'Zing MP3, NCT & Tencent': 8 }
+      },
+      {
+        id: 10,
+        title: 'Kỳ Vọng Sai Lầm',
+        artistNote: 'Tăng Duy Tân, Nguyễn Đình Vũ, ACV',
+        isrc: 'VN-EMV-22-00145',
+        releaseYear: 2022,
+        era: '2020-2022',
+        roleType: 'master_pub',
+        roleLabel: 'Master + Publishing',
+        topDsp: 'Zing MP3 & YouTube',
+        topDspIcon: 'fa-solid fa-music text-[#6366F1]',
+        baseStreams: 24800000,
+        baseGrossVND: 935000000,
+        status: 'paid',
+        masterSplit: 'Tăng Duy Tân (45%) • Nguyễn Đình Vũ (40%) • Euphoria (15%)',
+        publishingSplit: 'Tăng Duy Tân (50%) • Nguyễn Đình Vũ (50%)',
+        dspSplits: { Spotify: 28, 'TikTok & Douyin': 24, 'Apple Music': 12, 'YouTube Music & Content ID': 19, 'Zing MP3, NCT & Tencent': 17 }
+      },
+      {
+        id: 11,
+        title: 'Nâng Chén Tiêu Sầu (Sáng tác — Bích Phương)',
+        artistNote: 'Nhạc sĩ: Tăng Duy Tân',
+        isrc: 'VN-EMV-24-00351',
+        releaseYear: 2024,
+        era: '2023-2024',
+        roleType: 'pub_only',
+        roleLabel: 'Publishing Only (100%)',
+        topDsp: 'Spotify & YouTube',
+        topDspIcon: 'fa-brands fa-spotify text-[#2756CE]',
+        baseStreams: 21500000,
+        baseGrossVND: 695000000,
+        status: 'paid',
+        masterSplit: 'Bản ghi thuộc 1989s Entertainment',
+        publishingSplit: 'Tăng Duy Tân (85%) • Drum7 (15%)',
+        dspSplits: { Spotify: 36, 'TikTok & Douyin': 24, 'Apple Music': 17, 'YouTube Music & Content ID': 15, 'Zing MP3, NCT & Tencent': 8 }
+      },
+      {
+        id: 12,
         title: 'Sau Cơn Mưa',
+        artistNote: 'Tăng Duy Tân',
         isrc: 'VN-EMV-24-00312',
-        releaseYear: '2024',
+        releaseYear: 2024,
+        era: '2023-2024',
+        roleType: 'master_pub',
+        roleLabel: 'Master + Publishing',
         topDsp: 'TikTok & Spotify',
         topDspIcon: 'fa-brands fa-tiktok text-[#A855F7]',
-        baseStreams: 7900000,
-        baseGrossVND: 303764700,
+        baseStreams: 14200000,
+        baseGrossVND: 545000000,
+        status: 'paid',
+        masterSplit: 'Tăng Duy Tân (85%) • Euphoria Media (15%)',
+        publishingSplit: 'Tăng Duy Tân (100% Tác giả)',
+        dspSplits: { Spotify: 33, 'TikTok & Douyin': 32, 'Apple Music': 15, 'YouTube Music & Content ID': 13, 'Zing MP3, NCT & Tencent': 7 }
+      },
+      {
+        id: 13,
+        title: 'Khu Vườn Bí Mật (EP / Full Album)',
+        artistNote: 'Tăng Duy Tân',
+        isrc: 'VN-EMV-24-00450',
+        releaseYear: 2024,
+        era: '2023-2024',
+        roleType: 'master_pub',
+        roleLabel: 'Master + Publishing',
+        topDsp: 'Spotify & Apple Music',
+        topDspIcon: 'fa-brands fa-apple text-[#EC4899]',
+        baseStreams: 9850000,
+        baseGrossVND: 388000000,
+        status: 'paid',
+        masterSplit: 'Tăng Duy Tân (85%) • Euphoria Media (15%)',
+        publishingSplit: 'Tăng Duy Tân (100% Tác giả)',
+        dspSplits: { Spotify: 41, 'TikTok & Douyin': 18, 'Apple Music': 22, 'YouTube Music & Content ID': 12, 'Zing MP3, NCT & Tencent': 7 }
+      },
+      {
+        id: 14,
+        title: '05 (Không Phai)',
+        artistNote: 'Tăng Duy Tân ft. T.R.I',
+        isrc: 'VN-EMV-20-00019',
+        releaseYear: 2020,
+        era: '2020-2022',
+        roleType: 'master_pub',
+        roleLabel: 'Master + Publishing',
+        topDsp: 'Spotify & Zing MP3',
+        topDspIcon: 'fa-brands fa-spotify text-[#2756CE]',
+        baseStreams: 7600000,
+        baseGrossVND: 282000000,
+        status: 'paid',
+        masterSplit: 'Tăng Duy Tân (50%) • T.R.I (35%) • Euphoria (15%)',
+        publishingSplit: 'Tăng Duy Tân (50%) • T.R.I (50%)',
+        dspSplits: { Spotify: 36, 'TikTok & Douyin': 20, 'Apple Music': 16, 'YouTube Music & Content ID': 14, 'Zing MP3, NCT & Tencent': 14 }
+      },
+      {
+        id: 15,
+        title: 'Say Trong Nụ Cười',
+        artistNote: 'Tăng Duy Tân',
+        isrc: 'VN-EMV-23-00274',
+        releaseYear: 2023,
+        era: '2023-2024',
+        roleType: 'master_pub',
+        roleLabel: 'Master + Publishing',
+        topDsp: 'Spotify & TikTok',
+        topDspIcon: 'fa-brands fa-spotify text-[#2756CE]',
+        baseStreams: 6150000,
+        baseGrossVND: 236000000,
+        status: 'paid',
+        masterSplit: 'Tăng Duy Tân (85%) • Euphoria Media (15%)',
+        publishingSplit: 'Tăng Duy Tân (100% Tác giả)',
+        dspSplits: { Spotify: 35, 'TikTok & Douyin': 29, 'Apple Music': 15, 'YouTube Music & Content ID': 13, 'Zing MP3, NCT & Tencent': 8 }
+      },
+      {
+        id: 16,
+        title: 'Hẹn Em Dưới Ánh Trăng',
+        artistNote: 'Tăng Duy Tân',
+        isrc: 'VN-EMV-25-00512',
+        releaseYear: 2025,
+        era: '2025-2026',
+        roleType: 'master_pub',
+        roleLabel: 'Master + Publishing',
+        topDsp: 'Spotify & Apple Music',
+        topDspIcon: 'fa-brands fa-spotify text-[#2756CE]',
+        baseStreams: 5420000,
+        baseGrossVND: 218000000,
+        status: 'paid',
+        masterSplit: 'Tăng Duy Tân (85%) • Euphoria Media (15%)',
+        publishingSplit: 'Tăng Duy Tân (100% Tác giả)',
+        dspSplits: { Spotify: 39, 'TikTok & Douyin': 24, 'Apple Music': 18, 'YouTube Music & Content ID': 12, 'Zing MP3, NCT & Tencent': 7 }
+      },
+      {
+        id: 17,
+        title: 'Phải Lòng',
+        artistNote: 'Tăng Duy Tân',
+        isrc: 'VN-EMV-21-00073',
+        releaseYear: 2021,
+        era: '2020-2022',
+        roleType: 'master_pub',
+        roleLabel: 'Master + Publishing',
+        topDsp: 'Zing MP3 & Spotify',
+        topDspIcon: 'fa-solid fa-music text-[#6366F1]',
+        baseStreams: 3280000,
+        baseGrossVND: 124000000,
+        status: 'paid',
+        masterSplit: 'Tăng Duy Tân (85%) • Euphoria Media (15%)',
+        publishingSplit: 'Tăng Duy Tân (100% Tác giả)',
+        dspSplits: { Spotify: 33, 'TikTok & Douyin': 21, 'Apple Music': 14, 'YouTube Music & Content ID': 15, 'Zing MP3, NCT & Tencent': 17 }
+      },
+      {
+        id: 18,
+        title: 'Đêm Vũ Trường (2026 Single)',
+        artistNote: 'Tăng Duy Tân',
+        isrc: 'VN-EMV-26-00601',
+        releaseYear: 2026,
+        era: '2025-2026',
+        roleType: 'master_pub',
+        roleLabel: 'Master + Publishing',
+        topDsp: 'TikTok & Spotify',
+        topDspIcon: 'fa-brands fa-tiktok text-[#A855F7]',
+        baseStreams: 2650000,
+        baseGrossVND: 109458824,
         status: 'pending',
         masterSplit: 'Tăng Duy Tân (85%) • Euphoria Media (15%)',
         publishingSplit: 'Tăng Duy Tân (100% Tác giả)',
-        dspSplits: { Spotify: 33, 'TikTok & Douyin': 32, 'Apple Music': 15, 'YouTube Music & Content ID': 13, 'Zing MP3 & NhacCuaTui': 7 }
+        dspSplits: { Spotify: 34, 'TikTok & Douyin': 33, 'Apple Music': 15, 'YouTube Music & Content ID': 11, 'Zing MP3, NCT & Tencent': 7 }
       }
     ];
 
@@ -1130,10 +1455,12 @@
     // 1. Update KPI Cards
     function updateKPICards() {
       const data = PERIOD_DATA[currentPeriod];
+      document.getElementById('kpi-net-label').textContent = currentPeriod === 'all_time' ? 'Tổng Doanh Thu Net Lũy Kế' : 'Tổng Doanh Thu Net (85%)';
       document.getElementById('kpi-net-revenue').textContent = formatMoney(data.netRevenueVND);
       document.getElementById('kpi-net-growth').innerHTML = `<i class="fa-solid fa-arrow-trend-up"></i> ${data.netGrowth}`;
+      document.getElementById('kpi-period-sub').textContent = data.subLabel;
       document.getElementById('kpi-streams').textContent = formatNumber(data.streams);
-      document.getElementById('kpi-streams-growth').innerHTML = `<i class="fa-solid fa-arrow-trend-up"></i> ${data.streamsGrowth}`;
+      document.getElementById('kpi-streams-growth').innerHTML = `<i class="fa-solid fa-globe"></i> ${data.streamsGrowth}`;
       document.getElementById('kpi-pending').textContent = formatMoney(data.pendingVND);
       document.getElementById('kpi-rpm').textContent = formatMoney(data.rpmVND);
     }
@@ -1325,6 +1652,8 @@
     function renderTracksTable() {
       const tbody = document.getElementById('tracks-table-body');
       const searchQuery = document.getElementById('track-search').value.trim().toLowerCase();
+      const eraFilter = document.getElementById('track-era-filter').value;
+      const roleFilter = document.getElementById('track-role-filter').value;
       const statusFilter = document.getElementById('track-status-filter').value;
       const sortBy = document.getElementById('track-sort').value;
       const mult = PERIOD_DATA[currentPeriod].multiplier;
@@ -1339,17 +1668,25 @@
 
       // Filter
       computedTracks = computedTracks.filter(t => {
-        const matchesSearch = t.title.toLowerCase().includes(searchQuery) || t.isrc.toLowerCase().includes(searchQuery);
+        const matchesSearch = t.title.toLowerCase().includes(searchQuery) ||
+                              t.artistNote.toLowerCase().includes(searchQuery) ||
+                              t.isrc.toLowerCase().includes(searchQuery);
+        const matchesEra = eraFilter === 'all' || t.era === eraFilter;
+        const matchesRole = roleFilter === 'all' || t.roleType === roleFilter;
         const matchesStatus = statusFilter === 'all' || t.status === statusFilter;
-        return matchesSearch && matchesStatus;
+        return matchesSearch && matchesEra && matchesRole && matchesStatus;
       });
 
       // Sort
       if (sortBy === 'net_desc') computedTracks.sort((a, b) => b.netVND - a.netVND);
-      if (sortBy === 'net_asc') computedTracks.sort((a, b) => a.netVND - b.netVND);
       if (sortBy === 'streams_desc') computedTracks.sort((a, b) => b.streams - a.streams);
+      if (sortBy === 'year_desc') computedTracks.sort((a, b) => b.releaseYear - a.releaseYear || b.netVND - a.netVND);
+      if (sortBy === 'year_asc') computedTracks.sort((a, b) => a.releaseYear - b.releaseYear || b.netVND - a.netVND);
 
-      document.getElementById('table-count-label').textContent = `Hiển thị ${computedTracks.length} trên tổng số ${TRACKS_DATA.length} tác phẩm phát hành`;
+      const totalFilteredNet = computedTracks.reduce((sum, item) => sum + item.netVND, 0);
+      document.getElementById('catalog-badge-count').textContent = `${computedTracks.length} Tác phẩm`;
+      document.getElementById('table-count-label').textContent = `Hiển thị ${computedTracks.length} trên tổng số ${TRACKS_DATA.length} tác phẩm toàn sự nghiệp (2020 – 2026)`;
+      document.getElementById('filtered-net-total').textContent = formatMoney(totalFilteredNet);
 
       if (computedTracks.length === 0) {
         tbody.innerHTML = `
@@ -1364,25 +1701,32 @@
       }
 
       tbody.innerHTML = computedTracks.map((t, index) => {
+        const rankNum = String(index + 1).padStart(2, '0');
         const statusBadge = t.status === 'paid'
           ? `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Đã thanh toán</span>`
           : `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200"><span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>Đang đối soát</span>`;
+
+        const roleBadge = t.roleType === 'pub_only'
+          ? `<span class="inline-block text-[10px] font-bold px-2 py-0.5 rounded bg-purple-50 text-[#A855F7] border border-purple-200 mb-1">${t.roleLabel}</span>`
+          : `<span class="inline-block text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-[#2756CE] border border-[#DCE6F9] mb-1">${t.roleLabel}</span>`;
 
         return `
           <tr onclick="openTrackModal(${t.id})" class="hover:bg-[#F4F7FC] transition-colors cursor-pointer group">
             <td class="py-4 px-5">
               <div class="flex items-center gap-3">
                 <div class="w-9 h-9 rounded-xl bg-blue-50 border border-[#DCE6F9] flex items-center justify-center text-[#2756CE] font-extrabold text-xs shrink-0 group-hover:bg-[#2756CE] group-hover:text-white transition">
-                  0${index + 1}
+                  ${rankNum}
                 </div>
                 <div>
                   <div class="font-bold text-slate-900 group-hover:text-[#2756CE] transition">${t.title}</div>
-                  <div class="text-[11px] font-mono text-slate-400 mt-0.5">ISRC: ${t.isrc}</div>
+                  <div class="text-[11px] text-slate-500 mt-0.5">${t.artistNote} • <span class="font-semibold text-[#2756CE]">${t.releaseYear}</span></div>
+                  <div class="text-[10px] font-mono text-slate-400">ISRC: ${t.isrc}</div>
                 </div>
               </div>
             </td>
             <td class="py-4 px-4">
-              <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-[#F4F7FC] border border-[#DCE6F9] text-xs font-medium text-slate-700">
+              <div>${roleBadge}</div>
+              <div class="inline-flex items-center gap-1.5 text-xs font-medium text-slate-600">
                 <i class="${t.topDspIcon}"></i>
                 <span>${t.topDsp}</span>
               </div>
@@ -1493,16 +1837,16 @@
       document.getElementById('modal-dsp-bars').innerHTML = dspBarsHtml;
 
       // Render Master vs Publishing Split
-      const masterNet = Math.round(netVND * 0.70);
+      const masterNet = track.roleType === 'pub_only' ? 0 : Math.round(netVND * 0.70);
       const pubNet = netVND - masterNet;
       document.getElementById('modal-rights-detail').innerHTML = `
         <div class="p-3.5 rounded-xl bg-white border border-[#DCE6F9]">
-          <div class="text-[#2756CE] font-bold mb-1">Master Recording (70%)</div>
+          <div class="text-[#2756CE] font-bold mb-1">${track.roleType === 'pub_only' ? 'Master Recording (Đối tác sở hữu)' : 'Master Recording (70%)'}</div>
           <div class="text-slate-900 font-extrabold text-sm mb-1 tabular-nums">${formatMoney(masterNet)}</div>
           <div class="text-slate-500 text-[11px]">${track.masterSplit}</div>
         </div>
         <div class="p-3.5 rounded-xl bg-white border border-[#DCE6F9]">
-          <div class="text-[#A855F7] font-bold mb-1">Publishing / Tác quyền (30%)</div>
+          <div class="text-[#A855F7] font-bold mb-1">${track.roleType === 'pub_only' ? 'Publishing / Tác quyền (100%)' : 'Publishing / Tác quyền (30%)'}</div>
           <div class="text-slate-900 font-extrabold text-sm mb-1 tabular-nums">${formatMoney(pubNet)}</div>
           <div class="text-slate-500 text-[11px]">${track.publishingSplit}</div>
         </div>
@@ -1626,6 +1970,25 @@
     function exportReport(format) {
       document.getElementById('export-menu').classList.add('hidden');
       const periodText = PERIOD_DATA[currentPeriod].label;
+      if (format === 'CSV') {
+        const mult = PERIOD_DATA[currentPeriod].multiplier;
+        const headers = ['STT,Ten Tac Pham,Nghe Si / Vai Tro,Nam Phat Hanh,ISRC,Tong Streams,Doanh Thu Gross (VND),Phi Euphoria 15% (VND),Net Nghe Si Nhan (VND),Trang Thai'];
+        const rows = TRACKS_DATA.map((t, i) => {
+          const streams = Math.round(t.baseStreams * mult);
+          const gross = Math.round(t.baseGrossVND * mult);
+          const fee = Math.round(gross * 0.15);
+          const net = gross - fee;
+          return `${i + 1},"${t.title}","${t.artistNote} (${t.roleLabel})",${t.releaseYear},${t.isrc},${streams},${gross},${fee},${net},${t.status === 'paid' ? 'Da thanh toan' : 'Dang doi soat'}`;
+        });
+        const csvContent = '\uFEFF' + [headers, ...rows].join('\n');
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `EuphoriaMedia_TangDuyTan_FullCatalog_${currentPeriod}.csv`;
+        link.click();
+        showToast(`Đã tải xuống file CSV toàn bộ 18 tác phẩm (${periodText})`, 'success');
+        return;
+      }
       showToast(`Đang trích xuất báo cáo ${format} (${periodText})...`, 'info');
       setTimeout(() => {
         showToast(`Tải xuống thành công: EuphoriaMedia_TangDuyTan_${currentCurrency}.${format.toLowerCase()}`, 'success');
